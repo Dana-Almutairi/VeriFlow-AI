@@ -12,7 +12,8 @@ from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
 from starlette.types import ASGIApp, Receive, Scope, Send, Message
-
+from fastapi import Request
+from backend.rate_limiter import check_analysis_limit
 from backend.planning_agent import plan_research
 from backend.research_agent import research_claim
 from backend.verification_agent import verify_evidence
@@ -300,8 +301,9 @@ def execute_agent(agent_name, function, *args):
 
 
 @app.post("/analyze")
-def analyze_claim(request: ClaimRequest):
+def analyze_claim(request: ClaimRequest, http_request: Request):
     check_api_keys()
+    check_analysis_limit(http_request)
 
     analysis_start = time.perf_counter()
     agent_steps = []

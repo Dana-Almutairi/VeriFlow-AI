@@ -14,7 +14,8 @@ from backend.research_agent import research_claim
 from backend.verification_agent import verify_evidence
 from backend.evidence_validator import validate_evidence
 from backend.decision_agent import make_decision
-
+from fastapi import Request
+from backend.rate_limiter import check_analysis_limit
 logger = logging.getLogger("veriflow")
 router = APIRouter()
 
@@ -291,18 +292,20 @@ def run_streaming_analysis(claim: str):
 
 
 @router.post("/analyze/stream")
-def analyze_stream(request: StreamClaimRequest):
+def analyze_stream(request: StreamClaimRequest, http_request: Request):
     if not os.getenv("NEBIUS_API_KEY"):
         raise HTTPException(
-            status_code=500,
-            detail="Nebius API key is not configured",
+            status_code=503,
+            detail="Analysis service unavailable",
         )
 
     if not os.getenv("TAVILY_API_KEY"):
         raise HTTPException(
-            status_code=500,
-            detail="Tavily API key is not configured",
+            status_code=503,
+            detail="Analysis service unavailable",
         )
+
+    check_analysis_limit(http_request)
 
     return StreamingResponse(
         run_streaming_analysis(request.claim),
