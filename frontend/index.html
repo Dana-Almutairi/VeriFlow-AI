@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="VeriFlow AI - Multi-Agent Evidence Verification Platform">
+
+    <title>VeriFlow AI | Evidence Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            <span>VeriFlow<span class="logo-accent">AI</span></span>
+        </div>
+
+        <div class="nav-right">
+            <span class="status-dot"></span>
+            <span>AI Verification System</span>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-badge">
+                POWERED BY NVIDIA NEMOTRON
+            </div>
+
+            <h1>
+                Truth deserves
+                <span>better evidence.</span>
+            </h1>
+
+            <p class="hero-description">
+                Verify claims using a multi-agent AI system
+                that researches sources, evaluates evidence,
+                and explains its findings.
+            </p>
+        </section>
+
+        <section class="verification-card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Verify a Claim</h2>
+                    <p>Enter a statement to investigate.</p>
+                </div>
+
+                <span class="card-tag">AI POWERED</span>
+            </div>
+
+            <form id="verification-form">
+
+                <label for="claim-input">
+                    YOUR CLAIM
+                </label>
+
+                <textarea
+                    id="claim-input"
+                    placeholder="Example: The Earth revolves around the Sun."
+                    rows="5"
+                    maxlength="2000"
+                    required
+                ></textarea>
+
+                <div class="form-footer">
+                    <span id="character-count">0 / 2000</span>
+
+                    <button type="submit" id="verify-button">
+                        Verify Claim →
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <section id="loading-section" class="hidden">
+            <div class="loading-card">
+                <div class="spinner"></div>
+
+                <h2>Analyzing your claim...</h2>
+
+                <p>
+                    Our AI agents are researching and
+                    evaluating the available evidence.
+                </p>
+
+                <div class="agents-list">
+                    <div class="agent-item">
+                        <span>01</span> Planning Agent
+                    </div>
+
+                    <div class="agent-item">
+                        <span>02</span> Research Agent
+                    </div>
+
+                    <div class="agent-item">
+                        <span>03</span> Verification Agent
+                    </div>
+
+                    <div class="agent-item">
+                        <span>04</span> Evidence Validator
+                    </div>
+
+                    <div class="agent-item">
+                        <span>05</span> Decision Agent
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results-section" class="hidden">
+
+
+<div class="results-header">
+    <h2>Verification Report</h2>
+
+    <div class="results-actions">
+        <span id="result-status">Analysis Complete</span>
+
+        <button
+            type="button"
+            id="download-pdf-button"
+            disabled
+        >
+            Download PDF ↓
+        </button>
+    </div>
+</div>
+
+
+            <div class="verdict-card">
+                <p>PRELIMINARY VERDICT</p>
+                <h2 id="verdict-text">Awaiting analysis</h2>
+                <p id="verdict-description"></p>
+            </div>
+
+            <div class="metrics-grid">
+
+                <div class="metric-card">
+                    <span>Supporting Sources</span>
+                    <strong id="support-count">0</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Contradicting Sources</span>
+                    <strong id="contradict-count">0</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Insufficient Sources</span>
+                    <strong id="insufficient-count">0</strong>
+                </div>
+
+            </div>
+
+            <div class="evidence-section">
+                <h3>Evidence & Sources</h3>
+                <div id="evidence-list"></div>
+            </div>
+
+            <div class="disclaimer">
+                VeriFlow AI provides preliminary,
+                evidence-based assessments.
+                Results may contain errors and should
+                be reviewed before making important decisions.
+            </div>
+
+        </section>
+
+        <section id="error-section" class="hidden">
+            <div class="error-card">
+                <h2>Verification Unavailable</h2>
+                <p id="error-message"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>VeriFlow AI — Multi-Agent Evidence Intelligence</p>
+        <p>Powered by NVIDIA Nemotron & Nebius</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
